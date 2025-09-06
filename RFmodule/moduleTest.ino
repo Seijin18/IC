@@ -10,8 +10,8 @@
 #include <RF24.h>
 
 // Pin definitions for ESP32
-#define CE_PIN 2
-#define CSN_PIN 4
+#define CE_PIN 21
+#define CSN_PIN 22
 
 // Initialize NRF24L01
 RF24 radio(CE_PIN, CSN_PIN);
@@ -49,12 +49,12 @@ void setup() {
   }
   
   // Send test pattern to help diagnose issues
-  Serial.println("\n\n\n");
-  Serial.println("===========================================");
-  Serial.println("NRF24L01 Frequency Spectrum Analyzer");
-  Serial.println("Baud Rate: 115200");
-  Serial.println("If you see this message clearly, serial is working!");
-  Serial.println("===========================================");
+  // Serial.println("\n\n\n");
+  // Serial.println("===========================================");
+  // Serial.println("NRF24L01 Frequency Spectrum Analyzer");
+  // Serial.println("Baud Rate: 115200");
+  // Serial.println("If you see this message clearly, serial is working!");
+  // Serial.println("===========================================");
   
   // Initialize SPI
   SPI.begin();
@@ -79,34 +79,44 @@ void setup() {
   Serial.println();
   
   // Print header
-  printHeader();
+  // printHeader();
 }
+
+// void loop() {
+//   unsigned long currentTime = millis();
+  
+//   if (scanningEnabled && (currentTime - lastScanTime >= SCAN_INTERVAL)) {
+//     scanSpectrum();
+    
+//     if (csvMode) {
+//       outputCSVData();
+//     } else {
+//       displaySpectrum();
+//     }
+    
+//     lastScanTime = currentTime;
+//   }
+  
+//   // Check for serial commands
+//   if (Serial.available()) {
+//     handleSerialCommands();
+//   }
+// }
 
 void loop() {
   unsigned long currentTime = millis();
   
   if (scanningEnabled && (currentTime - lastScanTime >= SCAN_INTERVAL)) {
     scanSpectrum();
-    
-    if (csvMode) {
-      outputCSVData();
-    } else {
-      displaySpectrum();
-    }
-    
+    outputCSVData();
     lastScanTime = currentTime;
-  }
-  
-  // Check for serial commands
-  if (Serial.available()) {
-    handleSerialCommands();
   }
 }
 
 void scanSpectrum() {
-  if (!plotterMode) {
-    Serial.print("Scanning");
-  }
+  // if (!plotterMode) {
+  //   Serial.print("Scanning");
+  // }
   
   // Clear arrays
   for (int i = 0; i < NUM_CHANNELS; i++) {
@@ -133,15 +143,15 @@ void scanSpectrum() {
       radio.stopListening();
     }
     
-    // Progress indicator
-    if (!plotterMode && sample % 10 == 0) {
-      Serial.print(".");
-    }
+    // // Progress indicator
+    // if (!plotterMode && sample % 10 == 0) {
+    //   Serial.print(".");
+    // }
   }
   
-  if (!plotterMode) {
-    Serial.println(" Done!");
-  }
+  // if (!plotterMode) {
+  //   Serial.println(" Done!");
+  // }
   
   // Calculate averages and convert to percentage
   for (int i = 0; i < NUM_CHANNELS; i++) {
