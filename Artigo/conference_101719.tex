@@ -1,0 +1,156 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{Conference Paper Title*\\
+{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
+should not be used}
+}
+
+\author{\IEEEauthorblockN{1\textsuperscript{st} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{2\textsuperscript{nd} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{3\textsuperscript{rd} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{4\textsuperscript{th} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{5\textsuperscript{th} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{6\textsuperscript{th} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+}
+
+\maketitle
+
+\begin{abstract}
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+\end{abstract}
+
+\begin{IEEEkeywords}
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+\end{IEEEkeywords}
+
+\section{Introduction}
+Wireless remote communication is widely present in modern society, aiming to enable and facilitate a variety of processes. In many cases, this technology is applied to monitor different activities, both in industry and in medicine [2]. In addition, it also plays a fundamental role in Internet of Things (IoT) applications, as it establishes the communication framework between the devices that compose these systems [4].
+
+A fundamental aspect of wireless communication networks is spectral analysis, which consists of analyzing, in the frequency domain, the energy components that compose a signal [10]. Based on the proposed objectives, it is possible to apply signal processing techniques to manipulate and filter signals in order to obtain the desired behavior.
+
+Several techniques have been developed for examining the different types of signals encountered in daily applications, since, depending on their characteristics, some approaches provide better performance than others for specific signal types [10]. Examples include the moving average filter, maximum likelihood estimation, and the classical periodogram, which are methods originally derived from statistics that are applied to time-series analysis and are also useful in signal processing [5].
+
+Given the widespread use of communication networks, several applications of spectral analysis can be cited, such as independent component analysis for the separation of mixed signals [6], as well as its application in IoT systems to determine device characteristics and define the most suitable processing approaches for each case [7].
+
+In order to enable such analysis, a commonly used device is the oscilloscope, which is capable of acquiring electrical signals and displaying their waveforms, while also providing additional resources that facilitate testing and signal analysis [8]. For more specific applications, dedicated sensors developed according to the characteristics of the signals under evaluation may also be employed, such as in the assessment of 5G communication signals, in order to define better operating conditions [9].
+
+\subsection{Objectives}
+
+The objective of this work is to develop a low-cost spectrum analyzer capable of capturing signals in the 2.4 GHz frequency band and displaying them in a graphical format for interpretation and analysis, using financially accessible components.
+
+\subsubsection{Specific Objectives}
+\begin{itemize}
+    \item To ensure stable signal acquisition and reliable communication with the microcontroller;
+
+    \item To read the acquired signal and store it in an output file via the microcontroller;
+
+    \item To develop a user-friendly graphical interface that displays the occupied channels and frequencies.
+\end{itemize}
+
+
+\section{Materials and Methods}
+To develop this project, several core components were used. The main control unit was an ESP-32 microcontroller board, responsible for operating the Radio Frequency (RF) module. The NRF24L01 module was employed as the RF transceiver, capable of transmitting and receiving signals in the 2.4 GHz frequency band. A computer was also used to collect data, perform real-time visualization, and conduct subsequent analysis.
+
+In addition to these main components, several basic electronic elements were used, such as jumpers, protoboards, and an NRF24L01 shield for easier module integration.
+
+As described above, the ESP-32 controlled the NRF24L01 module to collect RF data within the 2.4 GHz band. The data were transmitted to the computer via a serial connection, where a Python script was used to read the corresponding serial channel. This script stored the received data in a CSV file and simultaneously generated real-time plots, allowing the operator to visualize the frequency behavior as measurements were taken.
+
+To obtain the RF data, a simple measurement protocol was established. First, the ESP-32 and NRF24L01 module were used to capture baseline signals from the environment with the target device turned off, providing a reference for ambient noise levels. After a predefined time interval, the target device was turned on, and the RF module was positioned in close proximity to it.
+
+As expected, the proposed system was able to monitor signals across the entire 2.4 GHz frequency band, and different signal patterns were observed for various RF devices under test.
+
+(Figures and corresponding explanations will be included here.)
+
+\section{Results}
+The signals from three different devices were captured and analyzed using the developed spectrum analyzer: a wireless headphone (Logitech G935), a wireless mouse (Logitech G Pro), and a microwave oven. As shown in Figures X, Y, and Z, clear differences in signal patterns can be observed among the devices, particularly in terms of frequency occupancy and signal intensity.
+
+Since all measurements were performed in the same environment and under similar conditions, the ambient noise level at the beginning of each measurement remained nearly constant. After each device was turned on, significant differences in the signal behavior became evident.
+
+For the wireless headphone, a relatively stable signal distribution across a limited frequency range was observed, with a nearly constant intensity level. This behavior is consistent with continuous data transmission typically required for audio streaming.
+
+In contrast, the wireless mouse presented a highly intermittent signal pattern, characterized by irregular bursts of activity. This behavior is consistent with its operational profile, where data transmission occurs primarily during user interaction, such as movement or button clicks, resulting in short-duration signal peaks.
+
+Finally, the microwave oven exhibited a markedly different signal pattern, characterized by significantly higher intensity levels and wideband interference across the entire 2.4 GHz frequency range. This broadband emission explains the strong interference commonly observed in wireless devices operating near an active microwave oven in this frequency band.
+
+\section*{Acknowledgment}
+
+The preferred spelling of the word ``acknowledgment'' in America is without 
+an ``e'' after the ``g''. Avoid the stilted expression ``one of us (R. B. 
+G.) thanks $\ldots$''. Instead, try ``R. B. G. thanks$\ldots$''. Put sponsor 
+acknowledgments in the unnumbered footnote on the first page.
+
+\section*{References}
+
+Please number citations consecutively within brackets \cite{b1}. The 
+sentence punctuation follows the bracket \cite{b2}. Refer simply to the reference 
+number, as in \cite{b3}---do not use ``Ref. \cite{b3}'' or ``reference \cite{b3}'' except at 
+the beginning of a sentence: ``Reference \cite{b3} was the first $\ldots$''
+
+Number footnotes separately in superscripts. Place the actual footnote at 
+the bottom of the column in which it was cited. Do not put footnotes in the 
+abstract or reference list. Use letters for table footnotes.
+
+Unless there are six authors or more give all authors' names; do not use 
+``et al.''. Papers that have not been published, even if they have been 
+submitted for publication, should be cited as ``unpublished'' \cite{b4}. Papers 
+that have been accepted for publication should be cited as ``in press'' \cite{b5}. 
+Capitalize only the first word in a paper title, except for proper nouns and 
+element symbols.
+
+For papers published in translation journals, please give the English 
+citation first, followed by the original foreign-language citation \cite{b6}.
+
+\begin{thebibliography}{00}
+\bibitem{b1} G. Eason, B. Noble, and I. N. Sneddon, ``On certain integrals of Lipschitz-Hankel type involving products of Bessel functions,'' Phil. Trans. Roy. Soc. London, vol. A247, pp. 529--551, April 1955.
+\bibitem{b2} J. Clerk Maxwell, A Treatise on Electricity and Magnetism, 3rd ed., vol. 2. Oxford: Clarendon, 1892, pp.68--73.
+\bibitem{b3} I. S. Jacobs and C. P. Bean, ``Fine particles, thin films and exchange anisotropy,'' in Magnetism, vol. III, G. T. Rado and H. Suhl, Eds. New York: Academic, 1963, pp. 271--350.
+\bibitem{b4} K. Elissa, ``Title of paper if known,'' unpublished.
+\bibitem{b5} R. Nicole, ``Title of paper with only first word capitalized,'' J. Name Stand. Abbrev., in press.
+\bibitem{b6} Y. Yorozu, M. Hirano, K. Oka, and Y. Tagawa, ``Electron spectroscopy studies on magneto-optical media and plastic substrate interface,'' IEEE Transl. J. Magn. Japan, vol. 2, pp. 740--741, August 1987 [Digests 9th Annual Conf. Magnetics Japan, p. 301, 1982].
+\bibitem{b7} M. Young, The Technical Writer's Handbook. Mill Valley, CA: University Science, 1989.
+\end{thebibliography}
+\vspace{12pt}
+\color{red}
+IEEE conference templates contain guidance text for composing and formatting conference papers. Please ensure that all template text is removed from your conference paper prior to submission to the conference. Failure to remove the template text from your paper may result in your paper not being published.
+
+\end{document}

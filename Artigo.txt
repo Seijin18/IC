@@ -1,0 +1,20 @@
+Introdução, Formulação do Problema, Introdução Teórica, Materiais e Métodos, Resultados, Discussão, Conclusão
+Bibliografia
+
+https://www.overleaf.com/latex/templates/ieee-conference-template/grfzhhncsfqn
+
+https://blog.saravati.com.br/construindo-um-bloqueador-de-bluetooth-com-esp32-e-nrf24/
+
+Pensar como justificar a implementação de um bloqueador de sinal para o tcc
+
+Melhorar a interface
+
+
+Algumas referências:
+- https://www.mdpi.com/1999-5903/16/6/200
+- https://ieeexplore.ieee.org/abstract/document/10571027
+- https://ieeexplore.ieee.org/abstract/document/10571027
+- https://www.cear.ufpb.br/juan/wp-content/uploads/2022/07/2021-ESTUDO-E-AVALIA%C3%87%C3%83O-DO-BLUETOOTH-LOW-ENERGY-E-SCADABR-EM-AMBIENTE-INDOOR-E-INDUSTRIAL.pdf
+- https://biblioteca.sbrt.org.br/articlefile/3596.pdf
+- https://biblioteca.sbrt.org.br/articlefile/3596.pdf
+- https://repositorio.ufrn.br/server/api/core/bitstreams/179265dc-7599-4cf2-a14c-eb40440f2a84/content (Embedded Artificial Neural Networks Optimized for Low-cost and Low-Size-Memory Devices)
