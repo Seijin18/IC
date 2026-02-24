@@ -1,112 +1,106 @@
-# Spectrum Analyzer Visualization
+# RF Spectrum Analyzer
 
-This document explains how to use the Python scripts to visualize the frequency spectrum data collected by your ESP32 with the NRF24L01 module.
+A Python GUI tool for recording and visualising 2.4 GHz RF spectrum data gathered by an ESP32 with an NRF24L01 module.
 
-## ESP32 Setup
+---
 
-1. Connect your NRF24L01 module to the ESP32:
-   - Connect NRF24L01 VCC to 3.3V
-   - Connect NRF24L01 GND to GND
-   - Connect NRF24L01 CE to GPIO 2
-   - Connect NRF24L01 CSN to GPIO 4
-   - Connect NRF24L01 SCK to GPIO 18
-   - Connect NRF24L01 MOSI to GPIO 23
-   - Connect NRF24L01 MISO to GPIO 19
+## Hardware
 
-2. Upload the `moduleTest.ino` sketch to your ESP32.
+### Wiring (NRF24L01  ESP32)
 
-## Collecting and Visualizing Data
+| NRF24L01 pin | ESP32 pin |
+|---|---|
+| VCC | 3.3 V |
+| GND | GND |
+| CE | GPIO 2 |
+| CSN | GPIO 4 |
+| SCK | GPIO 18 |
+| MOSI | GPIO 23 |
+| MISO | GPIO 19 |
 
-### Direct Serial Connection (Recommended)
+### Firmware
 
-1. Connect your ESP32 to your computer via USB
-2. Open the Serial Monitor at 115200 baud
-3. Press 'v' to activate CSV output mode
-4. Run the Python visualization script:
+Upload `moduleTest/moduleTest.ino` to the ESP32 (115 200 baud).
+The sketch sends comma-separated lines on the serial port:
 
-```bash
-python spectrum_visualizer.py --serial COM3 --samples 100 --save-csv my_spectrum_data.csv
+```
+<timestamp_ms>,<ch1>,<ch2>,...,<ch126>
 ```
 
-Replace `COM3` with your ESP32's serial port (e.g., `/dev/ttyUSB0` on Linux).
-
-### Using Pre-Collected Data
-
-After collecting data, you can visualize it in different ways:
-
-```bash
-# Create a static heatmap
-python spectrum_visualizer.py --file my_spectrum_data.csv
-
-# Create an animated visualization
-python spectrum_visualizer.py --file my_spectrum_data.csv --animate
-
-# Analyze the spectrum data
-python spectrum_visualizer.py --file my_spectrum_data.csv --analyze
-
-# Save the visualization to a file
-python spectrum_visualizer.py --file my_spectrum_data.csv --output spectrum.png
-```
-
-### No Data Yet?
-
-If you haven't collected real data yet, you can generate test data:
-
-```bash
-python generate_test_data.py
-```
-
-This will create a sample data file with simulated spectrum activity that you can use to test the visualization.
+---
 
 ## Installation
 
-### Using Installation Scripts (Recommended)
+### 1  Python
 
-For Windows users, you can easily install all dependencies by running one of the provided installation scripts:
+Python 3.10 or later is required. Download from https://www.python.org/downloads/.
 
+### 2  Virtual environment (recommended)
+
+```powershell
+cd RFmodule
+python -m venv .venv
+.venv\Scripts\Activate.ps1      # Windows PowerShell
+# source .venv/bin/activate     # Linux / macOS
 ```
-# Using PowerShell
-.\install_dependencies.ps1
 
-# OR using Command Prompt
-install_dependencies.bat
-```
+### 3  Dependencies
 
-These scripts will check for Python, install all required libraries, and provide guidance on using the tools.
-
-### Manual Installation
-
-If you prefer to install the dependencies manually:
-
-```bash
+```powershell
 pip install -r requirements.txt
 ```
 
-Or install individual packages:
+---
 
-```bash
-pip install numpy pandas matplotlib pyserial
+## Running
+
+```powershell
+python main.py
 ```
 
-## ESP32 Commands
+The window opens with two tabs.
 
-The spectrum analyzer responds to the following commands over the serial monitor:
+---
 
-- `s` - Perform a single scan
-- `c` - Activate continuous scanning (default)
-- `p` - Pause/resume scanning
-- `g` - Toggle Serial Plotter mode (for Arduino's built-in plotter)
-- `v` - Toggle CSV output mode (for Python visualization)
-- `h` - Show help menu
-- `r` - Reset the ESP32
+## Record tab
 
-## Understanding the Visualization
+Use this tab to capture live data from the board.
 
-- The y-axis represents the 126 channels of the NRF24L01, corresponding to frequencies from 2400 MHz to 2525 MHz
-- The x-axis represents time, showing how the spectrum activity changes over time
-- Brighter/hotter colors indicate higher activity in that frequency range
+1. **Port**  select the COM port of the connected ESP32 and click **Refresh** if it is not listed.
+2. **Save as**  type a name for the recording (e.g. `wifi_test`). The file will be saved as `saved_data/<name>.csv`. If the name is already taken, a timestamp is appended automatically.
+3. Click ** Start** to begin reading. The live spectrum plot updates in real time and the elapsed time and sample count are shown.
+4. Click ** Stop & Save** to stop the recording and write the CSV file.
 
-Common patterns to look for:
-- Wi-Fi channels typically appear as blocks of activity (especially around channels 1, 6, and 11)
-- Bluetooth devices may appear as frequency-hopping patterns across the spectrum
-- Microwave ovens often cause wide-band interference when operating
+---
+
+## View Stored Data tab
+
+Use this tab to inspect previously collected CSV files.
+
+1. The **File** dropdown is pre-populated with every CSV in the `saved_data/` folder. Click **Refresh** after adding new files, or click **Browse** to open any CSV on disk.
+2. Click **Open & Plot** to load the selected file and render a colour heatmap (time  channel, colour = activity %).
+3. Use the Matplotlib toolbar (pan, zoom, etc.) that appears below the plot.
+4. Click **Save Image** to export the current heatmap as PNG, JPEG, or PDF.
+
+---
+
+## CSV format
+
+| Column | Description |
+|---|---|
+| `timestamp` | Board uptime in milliseconds |
+| `Ch1`  `Ch126` | Activity level 0100 % for each 1 MHz channel (24012526 MHz) |
+
+---
+
+## Project structure
+
+```
+RFmodule/
+ main.py                application entry point
+ requirements.txt       Python dependencies
+ README.md              this file
+ moduleTest/
+    moduleTest.ino     ESP32 firmware
+ saved_data/            recorded CSV files (created automatically)
+```
