@@ -16,11 +16,11 @@
 should not be used}
 }
 
-\author{\IEEEauthorblockN{1\textsuperscript{st} Given Name Surname}
+\author{\IEEEauthorblockN{1\textsuperscript{st} Marcos Seiji Shiba}
 \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
 \textit{name of organization (of Aff.)}\\
-City, Country \\
-email address or ORCID}
+São José dos Campos, Brazil \\
+marcos.shiba@unifesp.br}
 \and
 \IEEEauthorblockN{2\textsuperscript{nd} Given Name Surname}
 \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
@@ -91,15 +91,15 @@ The objective of this work is to develop a low-cost spectrum analyzer capable of
 \section{Materials and Methods}
 To develop this project, several core components were used. The main control unit was an ESP-32 microcontroller board, responsible for operating the Radio Frequency (RF) module. The NRF24L01 module was employed as the RF transceiver, capable of transmitting and receiving signals in the 2.4 GHz frequency band. A computer was also used to collect data, perform real-time visualization, and conduct subsequent analysis.
 
-In addition to these main components, several basic electronic elements were used, such as jumpers, protoboards, and an NRF24L01 shield for easier module integration.
+In addition to these main components, several basic electronic elements were used, such as jumpers, breadboards, and an NRF24L01 shield for easier module integration.
 
-As described above, the ESP-32 controlled the NRF24L01 module to collect RF data within the 2.4 GHz band. The data were transmitted to the computer via a serial connection, where a Python script was used to read the corresponding serial channel. This script stored the received data in a CSV file and simultaneously generated real-time plots, allowing the operator to visualize the frequency behavior as measurements were taken.
+As described above, the ESP-32 controlled the NRF24L01 module to collect RF data within the 2.4 GHz band. The data were transmitted to the computer via a serial connection, where a Python application (Figure X) was developed to read the corresponding serial channel. This application stored the received data in a CSV file and simultaneously generated real-time plots, allowing the operator to visualize the frequency behavior as measurements were taken.
 
 To obtain the RF data, a simple measurement protocol was established. First, the ESP-32 and NRF24L01 module were used to capture baseline signals from the environment with the target device turned off, providing a reference for ambient noise levels. After a predefined time interval, the target device was turned on, and the RF module was positioned in close proximity to it.
 
 As expected, the proposed system was able to monitor signals across the entire 2.4 GHz frequency band, and different signal patterns were observed for various RF devices under test.
 
-(Figures and corresponding explanations will be included here.)
+(Figures to add.)
 
 \section{Results}
 The signals from three different devices were captured and analyzed using the developed spectrum analyzer: a wireless headphone (Logitech G935), a wireless mouse (Logitech G Pro), and a microwave oven. As shown in Figures X, Y, and Z, clear differences in signal patterns can be observed among the devices, particularly in terms of frequency occupancy and signal intensity.
@@ -111,6 +111,8 @@ For the wireless headphone, a relatively stable signal distribution across a lim
 In contrast, the wireless mouse presented a highly intermittent signal pattern, characterized by irregular bursts of activity. This behavior is consistent with its operational profile, where data transmission occurs primarily during user interaction, such as movement or button clicks, resulting in short-duration signal peaks.
 
 Finally, the microwave oven exhibited a markedly different signal pattern, characterized by significantly higher intensity levels and wideband interference across the entire 2.4 GHz frequency range. This broadband emission explains the strong interference commonly observed in wireless devices operating near an active microwave oven in this frequency band.
+
+
 
 \section*{Acknowledgment}
 
