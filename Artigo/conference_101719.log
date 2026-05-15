@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.2)  4 DEC 2025 17:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.30)  15 MAY 2026 20:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**d:/Projetinhos/IC/Artigo/conference_101719.tex
-(d:/Projetinhos/IC/Artigo/conference_101719.tex
-LaTeX2e <2025-06-01> patch level 1
-L3 programming layer <2025-09-02>
+**c:/Projetos/IC.worktrees/agents-precise-time-measurement-update/Artigo/conference_101719.tex
+(c:/Projetos/IC.worktrees/agents-precise-time-measurement-update/Artigo/conference_101719.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
 (IEEEtran.cls
 Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
 -- See the "IEEEtran_HOWTO" manual for usage information.
@@ -111,7 +111,7 @@ LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
 ) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
-Package: amsmath 2025/06/16 v2.17y AMS math features
+Package: amsmath 2025/07/09 v2.17z AMS math features
 \@mathmargin=\skip52
 
 For additional information on amsmath, use the `?' option.
@@ -172,8 +172,8 @@ LaTeX Info: Redefining \Relbar on input line 970.
 \multlinegap=\skip53
 \multlinetaggap=\skip54
 \mathdisplay@stack=\toks22
-LaTeX Info: Redefining \[ on input line 2949.
-LaTeX Info: Redefining \] on input line 2950.
+LaTeX Info: Redefining \[ on input line 2950.
+LaTeX Info: Redefining \] on input line 2951.
 ) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
  (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
@@ -208,7 +208,7 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 106.
  (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
-File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
+File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen181
 \Gin@req@width=\dimen182
@@ -231,7 +231,7 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 ) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
-File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
+File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count306
 ) (conference_101719.aux)
 \openout1 = `conference_101719.aux'.
@@ -280,15 +280,41 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 56.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Calculating math sizes for size <11> on input line 56.
-
-
-
-
-[1{C:/Users/marco/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
+<images/setup.jpg, id=1, 4015.0pt x 3011.25pt>
+File: images/setup.jpg Graphic file (type jpg)
+<use images/setup.jpg>
+Package pdftex.def Info: images/setup.jpg  used on input line 96.
+(pdftex.def)             Requested size: 232.19843pt x 174.1426pt.
+ [1{C:/Users/marco/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
 
 
 ]
-
+<images/SpectrumAnalyserInterface.png, id=11, 2036.60875pt x 708.6475pt>
+File: images/SpectrumAnalyserInterface.png Graphic file (type png)
+<use images/SpectrumAnalyserInterface.png>
+Package pdftex.def Info: images/SpectrumAnalyserInterface.png  used on input line 107.
+(pdftex.def)             Requested size: 232.19843pt x 80.78448pt.
+<images/headset.png, id=13, 688.0104pt x 328.1058pt>
+File: images/headset.png Graphic file (type png)
+<use images/headset.png>
+Package pdftex.def Info: images/headset.png  used on input line 121.
+(pdftex.def)             Requested size: 232.19843pt x 110.73343pt.
+<images/mouse.png, id=14, 688.0104pt x 328.1058pt>
+File: images/mouse.png Graphic file (type png)
+<use images/mouse.png>
+Package pdftex.def Info: images/mouse.png  used on input line 128.
+(pdftex.def)             Requested size: 232.19843pt x 110.73343pt.
+<images/microwave.png, id=15, 688.0104pt x 328.1058pt>
+File: images/microwave.png Graphic file (type png)
+<use images/microwave.png>
+Package pdftex.def Info: images/microwave.png  used on input line 135.
+(pdftex.def)             Requested size: 232.19843pt x 110.73343pt.
+<images/noise.png, id=16, 688.0104pt x 328.1058pt>
+File: images/noise.png Graphic file (type png)
+<use images/noise.png>
+Package pdftex.def Info: images/noise.png  used on input line 142.
+(pdftex.def)             Requested size: 232.19843pt x 110.73343pt.
+ [2 <./images/setup.jpg> <./images/SpectrumAnalyserInterface.png> <./images/headset.png> <./images/mouse.png> <./images/microwave.png> <./images/noise.png>] (conference_101719.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -300,26 +326,24 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-
-
-[2] (conference_101719.aux)
+[3] (conference_101719.aux)
  ***********
-LaTeX2e <2025-06-01> patch level 1
-L3 programming layer <2025-09-02>
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 4196 strings out of 468130
- 66011 string characters out of 5430633
- 484795 words of memory out of 5000000
- 32781 multiletter control sequences out of 15000+600000
- 666996 words of font info for 124 fonts, out of 8000000 for 9000
+ 4272 strings out of 467871
+ 68238 string characters out of 5418376
+ 489553 words of memory out of 5000000
+ 33112 multiletter control sequences out of 15000+600000
+ 669028 words of font info for 125 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,11n,65p,571b,306s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,11n,65p,654b,318s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on conference_101719.pdf (2 pages, 72800 bytes).
+Output written on conference_101719.pdf (3 pages, 4899154 bytes).
 PDF statistics:
- 40 PDF objects out of 1000 (max. 8388607)
+ 55 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

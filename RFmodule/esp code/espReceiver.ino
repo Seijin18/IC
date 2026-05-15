@@ -8,7 +8,10 @@
  * This is ~50× faster than the sweep-per-sample approach.
  *
  * Output format (no header line):
- *   <timestamp_ms>,<ch0_%>,<ch1_%>,...,<ch125_%>
+ *   <ch0_%>,<ch1_%>,...,<ch125_%>
+ * 
+ * Note: Timestamp is now managed by Python receiver for higher precision.
+ *       This allows the ESP32 to focus on data collection without timing overhead.
  *
  * Wiring (NRF24L01 → ESP32):
  *   VCC  → 3.3 V      GND  → GND
@@ -87,8 +90,8 @@ void scanSpectrum() {
 
 // ---------------------------------------------------------------------------
 void sendCSV() {
-  Serial.print(millis());
-  for (int i = 0; i < NUM_CHANNELS; i++) {
+  Serial.print(channelData[0]);
+  for (int i = 1; i < NUM_CHANNELS; i++) {
     Serial.print(',');
     Serial.print(channelData[i]);
   }

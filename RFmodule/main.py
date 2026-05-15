@@ -44,10 +44,12 @@ SPECTRUM_CMAP = LinearSegmentedColormap.from_list("spectrum", _HEATMAP_COLORS, N
 class SerialReaderThread(threading.Thread):
     """Background thread that reads comma-separated lines from a serial port.
 
-    Each line is expected to be:
-        <timestamp_ms>,<ch0>,<ch1>,...,<ch125>
+    Each line from ESP32 contains only channel data (no timestamp):
+        <ch0>,<ch1>,...,<ch125>
 
-    On each valid sample the *callback* is called with a list of ints.
+    This thread captures the timestamp locally upon reception for precise timing.
+    On each valid sample the *callback* is called with a list: [timestamp, ch0, ch1, ..., ch125]
+    where timestamp is a float from time.perf_counter().
     """
 
     def __init__(self, port: str, baudrate: int = BAUD_RATE, callback=None):
@@ -56,24 +58,30 @@ class SerialReaderThread(threading.Thread):
         self.baudrate = baudrate
         self.callback = callback
         self._stop_event = threading.Event()
+        self._start_time = None
 
     def run(self):
         try:
             ser = serial.Serial(self.port, self.baudrate, timeout=1)
             time.sleep(1)  # let the board reset
             ser.flushInput()
+            self._start_time = time.perf_counter()
             while not self._stop_event.is_set():
                 raw = ser.readline()
                 if not raw:
                     continue
+                # Capture timestamp immediately upon reception
+                timestamp = time.perf_counter() - self._start_time
                 line = raw.decode("utf-8", errors="ignore").strip()
                 if not line:
                     continue
                 parts = line.split(",")
-                if len(parts) < 2:
+                if len(parts) < 1:
                     continue
                 try:
-                    values = [int(p) for p in parts]
+                    channel_values = [int(p) for p in parts]
+                    # Prepend timestamp to channel values
+                    values = [timestamp] + channel_values
                     if self.callback:
                         self.callback(values)
                 except ValueError:
@@ -109,12 +117,12 @@ class LiveSpectrumCanvas:
         self.ax.set_ylabel("Activity (%)")
         self.ax.set_title("Live RF Spectrum")
         self.ax.grid(True, alpha=0.3)
-        # Mark Wi-Fi channels
-        for label, ch in WIFI_CHANNELS.items():
-            self.ax.axvline(ch, color="orange", linestyle="--", alpha=0.6, linewidth=1)
-            self.ax.text(
-                ch + 0.5, 95, f"Wi-Fi {label}", color="orange", fontsize=7, va="top"
-            )
+        # # Mark Wi-Fi channels
+        # for label, ch in WIFI_CHANNELS.items():
+        #     self.ax.axvline(ch, color="orange", linestyle="--", alpha=0.6, linewidth=1)
+        #     self.ax.text(
+        #         ch + 0.5, 95, f"Wi-Fi {label}", color="orange", fontsize=7, va="top"
+        #     )
 
     def update(self, channel_values: list):
         y = channel_values[:N_CHANNELS]
@@ -246,7 +254,7 @@ class RecordTab(ttk.Frame):
         self.after(0, lambda v=values: self._gui_update(v))
 
     def _gui_update(self, values: list):
-        self._live_canvas.update(values[1:])  # skip timestamp
+        self._live_canvas.update(values[1:])  # skip timestamp at index 0
         self._sample_lbl.config(text=f"  Samples: {len(self._samples)}")
 
     def _tick_timer(self):
@@ -410,11 +418,9 @@ class ViewTab(ttk.Frame):
         timestamps = df[ts_col].values
 
         # Build time labels
-        if timestamps[-1] > 1e5:  # assume milliseconds
-            t_sec = timestamps / 1000.0
-        else:
-            t_sec = timestamps.astype(float)
-        t_sec = t_sec - t_sec[0]  # relative seconds
+        # Timestamps are already in seconds (from Python time.perf_counter())
+        t_sec = timestamps.astype(float)
+        t_sec = t_sec - t_sec[0]  # relative seconds from start
 
         fig = Figure(figsize=(10, 5), tight_layout=True)
         ax = fig.add_subplot(111)
@@ -446,18 +452,18 @@ class ViewTab(ttk.Frame):
         ax.set_yticks(y_ticks)
         ax.set_yticklabels([f"{t+1} ({2400+t+1} MHz)" for t in y_ticks], fontsize=8)
 
-        # Wi-Fi markers
-        for wlabel, wch in WIFI_CHANNELS.items():
-            if wch < len(ch_cols):
-                ax.axhline(wch, color="white", linestyle="--", alpha=0.5, linewidth=1)
-                ax.text(
-                    0.5,
-                    wch + 0.5,
-                    f"Wi-Fi {wlabel}",
-                    color="white",
-                    fontsize=7,
-                    va="bottom",
-                )
+        # # Wi-Fi markers
+        # for wlabel, wch in WIFI_CHANNELS.items():
+        #     if wch < len(ch_cols):
+        #         ax.axhline(wch, color="white", linestyle="--", alpha=0.5, linewidth=1)
+        #         ax.text(
+        #             0.5,
+        #             wch + 0.5,
+        #             f"Wi-Fi {wlabel}",
+        #             color="white",
+        #             fontsize=7,
+        #             va="bottom",
+        #         )
 
         cbar = fig.colorbar(im, ax=ax, fraction=0.046, pad=0.02)
         cbar.set_label("Activity (%)", fontsize=10)
